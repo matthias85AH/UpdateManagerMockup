@@ -3,6 +3,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:UpdateManagerMockup.ViewModels"
+			 xmlns:uc="clr-namespace:UpdateManagerMockup.Views.UserControls;assembly=UpdateManagerMockup"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UpdateManagerMockup.Views.MainView"
              x:DataType="vm:MainViewModel">
@@ -12,5 +13,16 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
-  <TextBlock FontFamily="{StaticResource Khand}" Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+	<TabControl Margin="5">
+		<TabItem FontFamily="{StaticResource Khand}" Header="Select Interface">
+			<uc:TabInterface></uc:TabInterface>
+		</TabItem>
+		<TabItem FontFamily="{StaticResource Khand}" Header="Select Device">
+			<uc:TabDevice></uc:TabDevice>
+		</TabItem>
+		<TabItem FontFamily="{StaticResource Khand}" Header="Update Status">
+			<uc:TabUpdate></uc:TabUpdate>
+		</TabItem>
+	</TabControl>
+  
 </UserControl>
