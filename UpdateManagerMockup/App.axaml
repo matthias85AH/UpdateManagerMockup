@@ -12,4 +12,8 @@
     <Application.Styles>
         <FluentTheme />
     </Application.Styles>
+
+	<Application.Resources>
+		<FontFamily x:Key="Khand">avares://UpdateManagerMockup/Assets/Fonts#Khand</FontFamily>
+	</Application.Resources>
 </Application>
