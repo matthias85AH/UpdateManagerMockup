@@ -6,7 +6,7 @@
         xmlns:views="clr-namespace:UpdateManagerMockup.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="UpdateManagerMockup.Views.MainWindow"
-        Icon="/Assets/avalonia-logo.ico"
+        Icon="/Assets/LdLogo_w.png"
         Title="UpdateManagerMockup">
         <views:MainView />
 </Window>
