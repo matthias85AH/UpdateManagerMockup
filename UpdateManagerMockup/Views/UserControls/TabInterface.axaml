@@ -4,5 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UpdateManagerMockup.Views.UserControls.TabInterface">
-	<TextBlock FontFamily="{StaticResource Khand}" Text="Interface Tab" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+	<Grid VerticalAlignment="Center">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="30"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="150"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="40"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Text="Please choose interface your devices are attached to" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+		
+		<ListBox x:Name="lbInterfaceSelect" SelectionMode="Single" Grid.Row="2" HorizontalAlignment="Center" Width="200">
+			<ListBoxItem Content="USB" />
+			<ListBoxItem Content="LAN" />
+			<ListBoxItem Content="Bluetooth" />
+		</ListBox>
+	</Grid>
+
 </UserControl>
