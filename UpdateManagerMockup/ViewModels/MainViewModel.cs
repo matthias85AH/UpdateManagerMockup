@@ -1,9 +1,12 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Diagnostics;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace UpdateManagerMockup.ViewModels;
 
 public partial class MainViewModel : ViewModelBase
 {
-    [ObservableProperty]
-    private string _greeting = "Welcome to Avalonia!";
+    public void OutputText(string text)
+    {
+        Debug.WriteLine(text);
+    }
 }

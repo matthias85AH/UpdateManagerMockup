@@ -1,4 +1,9 @@
+using System;
+using System.Diagnostics;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
+using UpdateManagerMockup.Events;
+using UpdateManagerMockup.Views.UserControls;
 
 namespace UpdateManagerMockup.Views;
 
@@ -7,5 +12,29 @@ public partial class MainView : UserControl
     public MainView()
     {
         InitializeComponent();
+
+        tabInterface.AddHandler(TabInterface.NextTabRequestedEvent, OnGoToNextTab, handledEventsToo: true);
+        tabDevice.AddHandler(TabDevice.PrevTabRequestedEvent, OnGoToPrevTab, handledEventsToo: true);
+        tabDevice.AddHandler(TabDevice.RequestedDeviceUpdateEvent, OnDeviceUpdateRequested, handledEventsToo: true);
+    }
+
+    private void OnGoToNextTab(object? sender, RoutedEventArgs e)
+    {
+        Debug.WriteLine("Switch to next Tab in Main View");
+        tabControlMain.SelectedIndex += 1;
+    }
+
+    private void OnGoToPrevTab(object? sender, RoutedEventArgs e)
+    {
+        Debug.WriteLine("Switch to prev Tab in Main View");
+        tabControlMain.SelectedIndex -= 1;
+    }
+
+    private void OnDeviceUpdateRequested(object? sender, RoutedEventArgs e)
+    {
+        RequestUpdateEventArgs reqUpdArgs = (RequestUpdateEventArgs)e;
+
+        Debug.WriteLine($"Update of Device {reqUpdArgs.DeviceToUpdate}");
+        tabControlMain.SelectedIndex = 2;
     }
 }

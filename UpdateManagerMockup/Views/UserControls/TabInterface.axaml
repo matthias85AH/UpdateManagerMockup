@@ -11,16 +11,30 @@
 			<RowDefinition Height="40"/>
 			<RowDefinition Height="150"/>
 			<RowDefinition Height="*"/>
-			<RowDefinition Height="40"/>
+			<RowDefinition Height="80"/>
 		</Grid.RowDefinitions>
 
-		<TextBlock Text="Please choose interface your devices are attached to" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+		<TextBlock Text="Please choose the interface your devices are attached to" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
 		
 		<ListBox x:Name="lbInterfaceSelect" SelectionMode="Single" Grid.Row="2" HorizontalAlignment="Center" Width="200">
 			<ListBoxItem Content="USB" />
 			<ListBoxItem Content="LAN" />
 			<ListBoxItem Content="Bluetooth" />
 		</ListBox>
+
+		<Button
+			x:Name="btnNext"
+			Width="100" 
+			Height="40" 
+			Grid.Row="4" 
+			HorizontalAlignment="Right" 
+			VerticalAlignment="Bottom"
+			Click="NextButtonClicked"
+			>
+			<Button.Content>
+				<Image Source="avares://UpdateManagerMockup/Assets/NextArrow.png"></Image>
+			</Button.Content>
+		</Button>
 	</Grid>
 
 </UserControl>

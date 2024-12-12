@@ -13,15 +13,15 @@
     <vm:MainViewModel />
   </Design.DataContext>
 
-	<TabControl Margin="5">
+	<TabControl x:Name="tabControlMain" Margin="5">
 		<TabItem FontFamily="{StaticResource Khand}" Header="Select Interface">
-			<uc:TabInterface></uc:TabInterface>
+			<uc:TabInterface x:Name="tabInterface"></uc:TabInterface>
 		</TabItem>
 		<TabItem FontFamily="{StaticResource Khand}" Header="Select Device">
-			<uc:TabDevice></uc:TabDevice>
+			<uc:TabDevice x:Name="tabDevice"></uc:TabDevice>
 		</TabItem>
 		<TabItem FontFamily="{StaticResource Khand}" Header="Update Status">
-			<uc:TabUpdate></uc:TabUpdate>
+			<uc:TabUpdate x:Name="tabUpdate"></uc:TabUpdate>
 		</TabItem>
 	</TabControl>
   

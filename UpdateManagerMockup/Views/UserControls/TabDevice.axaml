@@ -2,7 +2,73 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="clr-namespace:UpdateManagerMockup.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="UpdateManagerMockup.Views.UserControls.TabDevice">
-	<TextBlock FontFamily="{StaticResource Khand}" Text="Device Tab" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+             x:Class="UpdateManagerMockup.Views.UserControls.TabDevice"
+			 x:DataType="vm:DeviceViewModel"
+			 VerticalAlignment="Stretch"
+			 HorizontalAlignment="Stretch">
+	<UserControl.DataContext>
+		<vm:DeviceViewModel />
+	</UserControl.DataContext>
+	<Design.DataContext>
+		<!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+		<vm:DeviceViewModel />
+	</Design.DataContext>
+
+	<Grid VerticalAlignment="Center">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="10"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="300"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="80"/>
+		</Grid.RowDefinitions>
+
+		<TextBlock Text="Please choose a device to Update" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
+
+		<DataGrid x:Name="dgDevices" Margin="20" Grid.Row="2" ItemsSource="{Binding Devices}"
+		  AutoGenerateColumns="True" IsReadOnly="True"
+		  GridLinesVisibility="All"
+		  BorderThickness="1" BorderBrush="Gray">
+		</DataGrid>
+
+		<StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4">
+			<Button
+			x:Name="btnPrev"
+			Width="100"
+			Height="40"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Click="PrevButtonClicked"
+		>
+				<Button.Content>
+					<Image Source="avares://UpdateManagerMockup/Assets/NextArrow.png">
+						<Image.RenderTransform>
+							<RotateTransform Angle="180" CenterX="0.5" CenterY="0.5" />
+						</Image.RenderTransform>
+					</Image>
+				</Button.Content>
+			</Button>
+
+			<Button
+			x:Name="btnUpdate"
+			Width="100"
+			Height="40"
+			HorizontalAlignment="Right"
+			VerticalAlignment="Bottom"
+			Click="UpdateButtonClicked"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center">
+				<Button.Content>
+					Update
+				</Button.Content>
+			</Button>
+		</StackPanel>
+		
+		
+	</Grid>
+
+	
 </UserControl>
