@@ -15,5 +15,8 @@
 
 	<Application.Resources>
 		<FontFamily x:Key="Khand">avares://UpdateManagerMockup/Assets/Fonts#Khand</FontFamily>
+		<Color x:Key="SystemAccentColor">#00A3C8</Color>
+		<Color x:Key="SystemAccentColorLight1">#00A3C8</Color>
+		<Color x:Key="SystemAccentColorDark1">#00A3C8</Color>
 	</Application.Resources>
 </Application>
