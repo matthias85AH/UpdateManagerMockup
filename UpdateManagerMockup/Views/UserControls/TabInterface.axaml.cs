@@ -3,13 +3,15 @@ using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using DeviceManagerMockup;
+using UpdateManagerMockup.Events;
 
 namespace UpdateManagerMockup.Views.UserControls;
 
 public partial class TabInterface : UserControl
 {
-    public static readonly RoutedEvent<RoutedEventArgs> NextTabRequestedEvent =
-        RoutedEvent.Register<TabInterface, RoutedEventArgs>("NextTabRequestedEvent", RoutingStrategies.Bubble);
+    public static readonly RoutedEvent<RequestDeviceSelectionEventArgs> RequestDeviceSelection =
+        RoutedEvent.Register<TabDevice, RequestDeviceSelectionEventArgs>("RequestDeviceSelection", RoutingStrategies.Bubble);
 
     public TabInterface()
     {
@@ -32,6 +34,6 @@ public partial class TabInterface : UserControl
     {
         Debug.WriteLine("NextButtonClicked");
 
-        RaiseEvent(new RoutedEventArgs(NextTabRequestedEvent));
+        RaiseEvent(new RequestDeviceSelectionEventArgs(RequestDeviceSelection, (DeviceInterfaceType)(lbInterfaceSelect.SelectedIndex)));
     }
 }

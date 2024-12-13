@@ -21,20 +21,37 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="10"/>
 			<RowDefinition Height="40"/>
+			<RowDefinition Height="40"/>
 			<RowDefinition Height="300"/>
 			<RowDefinition Height="*"/>
-			<RowDefinition Height="80"/>
+			<RowDefinition Height="40"/>
 		</Grid.RowDefinitions>
+
+		
 
 		<TextBlock Text="Please choose a device to Update" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
 
-		<DataGrid x:Name="dgDevices" Margin="20" Grid.Row="2" ItemsSource="{Binding Devices}"
+		<Button
+			x:Name="btnScan"
+			Grid.Row="2"
+			Width="150"
+			Height="30"
+			HorizontalAlignment="Center"
+			VerticalAlignment="Bottom"
+			Command="{Binding StartScanCommand}"
+			Content="{Binding ScanButtonText}"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center"
+		>
+		</Button>
+
+		<DataGrid x:Name="dgDevices" Margin="20" Grid.Row="3" ItemsSource="{Binding Devices}"
 		  AutoGenerateColumns="True" IsReadOnly="True"
 		  GridLinesVisibility="All"
 		  BorderThickness="1" BorderBrush="Gray">
 		</DataGrid>
 
-		<StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4">
+		<StackPanel Margin="5" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5">
 			<Button
 			x:Name="btnPrev"
 			Width="100"

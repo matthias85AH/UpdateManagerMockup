@@ -1,30 +1,83 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
-using UpdateManagerMockup.Models;
+using CommunityToolkit.Mvvm.Input;
+using DeviceManagerMockup;
+using UpdateManagerMockup.Views.UserControls;
 
 namespace UpdateManagerMockup.ViewModels;
 
 public partial class DeviceViewModel : ViewModelBase
 {
+    private int _scanProgressPercent = -1;
+
+    IProgress<int> _scanProgress;
+    Action<Device> _newDeviceObserver;
+
+    public RelayCommand StartScanCommand { get; }
+
     public ObservableCollection<Device> Devices { get; }
 
-    public DeviceViewModel() 
-    { 
-        List<Device> devices = new List<Device>();
-        devices.Add(new Device() { Product = "MAUI", AdapterID= "C7-DE-8E-DD-6C-A8", InstalledFW="0.5.1", Status="Device needs update", Address= "C7-DE-8E-DD-6C-A8" });
-        devices.Add(new Device() { Product = "MAILA", AdapterID= "6D-FB-26-C5-9E-3A", InstalledFW="1.4.0", Status="Device needs update", Address= "6D-FB-26-C5-9E-3A" });
-        devices.Add(new Device() { Product = "MAUI", AdapterID= "67-3F-93-CC-FC-1B", InstalledFW="0.6.1", Status="Device is up to date", Address= "67-3F-93-CC-FC-1B" });
-        devices.Add(new Device() { Product = "MAILA", AdapterID = "AA-EA-AB-52-CC-C0", InstalledFW="1.3.5", Status="Device needs update", Address= "AA-EA-AB-52-CC-C0" });
+    public DeviceViewModel()
+    {
+        _scanProgress = new Progress<int>(ScanProgressChanged);
+        _newDeviceObserver = new Action<Device>(OnDeviceFound);
 
-        Devices = new ObservableCollection<Device>(devices);
+        StartScanCommand = new RelayCommand(OnScan);
 
-        OnPropertyChanged(nameof(Devices));
+        Devices = new ObservableCollection<Device>();
     }
 
-    public void OutputText(string text)
+    public string ScanButtonText
     {
-        Debug.WriteLine(text);
+        get
+        {
+            if (_scanProgressPercent == -1)
+            {
+                return "Start Scan";
+            }
+            else
+            {
+                return $"Scanning... ({_scanProgressPercent}%)";
+            }
+        }
+    }
+
+    private void OnScan()
+    {
+        // Your business logic here, for example:
+        Debug.WriteLine("Scan start!");
+
+        Devices.Clear();
+        _scanProgressPercent = -1;
+
+        OnPropertyChanged(nameof(ScanButtonText));
+        
+        Task.Run(() =>
+        {
+            DeviceManager.ScanAsync(AppState.SelectedInterfaceType, _scanProgress, null, _newDeviceObserver);
+        });
+    }
+
+    private void ScanProgressChanged(int progress)
+    {
+        _scanProgressPercent = progress;
+
+        OnPropertyChanged(nameof(ScanButtonText));
+    }
+
+    private void OnDeviceFound(Device device)
+    {
+        Debug.WriteLine($"Device found {device.Address}");
+
+        Dispatcher.UIThread.Post(() => 
+        {
+            Devices.Add(device);
+            OnPropertyChanged(nameof(Devices));
+        });
     }
 }

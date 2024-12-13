@@ -3,10 +3,10 @@ using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
-using UpdateManagerMockup.Models;
 using Avalonia.Interactivity;
 using System.Diagnostics;
 using UpdateManagerMockup.Events;
+using DeviceManagerMockup;
 
 namespace UpdateManagerMockup.Views.UserControls;
 
@@ -46,6 +46,6 @@ public partial class TabDevice : UserControl
     {
         Debug.WriteLine("UpdateButtonClicked");
 
-        RaiseEvent(new RequestUpdateEventArgs(RequestedDeviceUpdateEvent, dgDevices.SelectedIndex.ToString()));
+        RaiseEvent(new RequestUpdateEventArgs(RequestedDeviceUpdateEvent, DeviceManager.Devices[dgDevices.SelectedIndex]));
     }
 }
