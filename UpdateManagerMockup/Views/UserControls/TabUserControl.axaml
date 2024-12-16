@@ -1,0 +1,39 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+			 xmlns:vm="clr-namespace:UpdateManagerMockup.ViewModels"
+			 xmlns:local="using:UpdateManagerMockup.Views.UserControls"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="UpdateManagerMockup.Views.UserControls.TabUserControl"
+			 VerticalAlignment="Stretch"
+			 HorizontalAlignment="Stretch">
+
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="2*"></ColumnDefinition>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"></RowDefinition>
+			<RowDefinition Height="2*"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Column="0">
+			<local:ucFrequencyPlot x:Name="FrequencyPlot" Frequency="80" Amplitude="50" />
+		</Border>
+
+		<StackPanel  Margin="20" Grid.Row="0" Grid.Column="1">
+			<Label HorizontalAlignment="Center" VerticalAlignment="Bottom">Frequency</Label>
+			<Slider x:Name="sliderFrequency" Minimum="0" Maximum="100" Value="{Binding ElementName=FrequencyPlot, Path=Frequency}"></Slider>
+			<Rectangle Height="10"></Rectangle>
+			<Label HorizontalAlignment="Center" VerticalAlignment="Bottom">Amplitude</Label>
+			<Slider x:Name="sliderAmplitude" Minimum="0" Maximum="100" Value="{Binding ElementName=FrequencyPlot, Path=Amplitude}"></Slider>
+		</StackPanel>
+		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+			<local:ucTouchPlayground x:Name="TouchPlayground"/>
+		</Border>
+	</Grid>
+
+	
+</UserControl>
