@@ -12,13 +12,12 @@
 		<vm:UpdateViewModel />
 	</UserControl.DataContext>
 
-	<Grid VerticalAlignment="Center">
+	<Grid VerticalAlignment="Stretch">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="10"/>
 			<RowDefinition Height="40"/>
 			<RowDefinition Height="40"/>
 			<RowDefinition Height="40"/>
-			<RowDefinition Height="300"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="40"/>
 		</Grid.RowDefinitions>
@@ -53,9 +52,9 @@
 		>
 		</Button>
 
-		<ProgressBar Grid.Row="4" Height="30" ShowProgressText="True" Value="{Binding UpdateProgressPercent}"></ProgressBar>
+		<ProgressBar Margin="10" Grid.Row="4" Height="30" ShowProgressText="True" VerticalAlignment="Top" Value="{Binding UpdateProgressPercent}"></ProgressBar>
 
-		<StackPanel Margin="5" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="6">
+		<StackPanel Margin="5" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5">
 			<Button
 			x:Name="btnPrev"
 			Width="100"

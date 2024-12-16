@@ -23,13 +23,16 @@
 			<local:ucFrequencyPlot x:Name="FrequencyPlot" Frequency="80" Amplitude="50" />
 		</Border>
 
-		<StackPanel  Margin="20" Grid.Row="0" Grid.Column="1">
-			<Label HorizontalAlignment="Center" VerticalAlignment="Bottom">Frequency</Label>
-			<Slider x:Name="sliderFrequency" Minimum="0" Maximum="100" Value="{Binding ElementName=FrequencyPlot, Path=Frequency}"></Slider>
-			<Rectangle Height="10"></Rectangle>
-			<Label HorizontalAlignment="Center" VerticalAlignment="Bottom">Amplitude</Label>
-			<Slider x:Name="sliderAmplitude" Minimum="0" Maximum="100" Value="{Binding ElementName=FrequencyPlot, Path=Amplitude}"></Slider>
-		</StackPanel>
+		<Viewbox Margin="5" Stretch="Uniform" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="1">
+			<StackPanel Width="200" >
+				<Label  HorizontalAlignment="Center" VerticalAlignment="Center">Frequency</Label>
+				<Slider  x:Name="sliderFrequency" Minimum="0" Maximum="100" Value="{Binding ElementName=FrequencyPlot, Path=Frequency}"></Slider>
+				<Rectangle></Rectangle>
+				<Label  HorizontalAlignment="Center" VerticalAlignment="Bottom">Amplitude</Label>
+				<Slider  x:Name="sliderAmplitude" Minimum="0" Maximum="100" Value="{Binding ElementName=FrequencyPlot, Path=Amplitude}"></Slider>
+			</StackPanel>
+		</Viewbox>
+		
 		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
 			<local:ucTouchPlayground x:Name="TouchPlayground"/>
 		</Border>

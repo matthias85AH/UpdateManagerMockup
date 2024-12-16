@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading;
 using System.Threading.Tasks;
 using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -18,16 +19,29 @@ public partial class DeviceViewModel : ViewModelBase
     IProgress<int> _scanProgress;
     Action<Device> _newDeviceObserver;
 
-    public RelayCommand StartScanCommand { get; }
+    public AsyncRelayCommand StartScanCommand { get; }
+    public RelayCommand CancelScanCommand { get; }
 
     public ObservableCollection<Device> Devices { get; }
+
+    private CancellationTokenSource cts;
+
+    private bool _cancelButtonEnabled = false;
+    public bool CancelButtonEnabled
+    {
+        get
+        {
+            return _cancelButtonEnabled;
+        }
+    }
 
     public DeviceViewModel()
     {
         _scanProgress = new Progress<int>(ScanProgressChanged);
         _newDeviceObserver = new Action<Device>(OnDeviceFound);
 
-        StartScanCommand = new RelayCommand(OnScan);
+        StartScanCommand = new AsyncRelayCommand(OnScan);
+        CancelScanCommand = new RelayCommand(OnCancelScan);
 
         Devices = new ObservableCollection<Device>();
     }
@@ -47,20 +61,39 @@ public partial class DeviceViewModel : ViewModelBase
         }
     }
 
-    private void OnScan()
+    private async Task OnScan()
     {
         // Your business logic here, for example:
         Debug.WriteLine("Scan start!");
 
         Devices.Clear();
         _scanProgressPercent = -1;
-
         OnPropertyChanged(nameof(ScanButtonText));
-        
-        Task.Run(() =>
+
+        _cancelButtonEnabled = true;
+        OnPropertyChanged(nameof(CancelButtonEnabled));
+
+        cts = new();
+
+        try
         {
-            DeviceManager.ScanAsync(AppState.SelectedInterfaceType, _scanProgress, null, _newDeviceObserver);
-        });
+            await DeviceManager.ScanAsync(AppState.SelectedInterfaceType, _scanProgress, cts.Token, _newDeviceObserver);
+        }
+        catch (OperationCanceledException)
+        {
+            Debug.WriteLine("Scan canceled");
+        }
+
+        _cancelButtonEnabled = false;
+        OnPropertyChanged(nameof(CancelButtonEnabled));
+
+        _scanProgressPercent = -1;
+        OnPropertyChanged(nameof(ScanButtonText));
+    }
+
+    private void OnCancelScan()
+    {
+        cts.Cancel();
     }
 
     private void ScanProgressChanged(int progress)

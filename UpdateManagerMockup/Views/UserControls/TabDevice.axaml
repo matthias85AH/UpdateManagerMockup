@@ -17,31 +17,39 @@
 		<vm:DeviceViewModel />
 	</Design.DataContext>
 
-	<Grid VerticalAlignment="Center">
+	<Grid VerticalAlignment="Stretch">
 		<Grid.RowDefinitions>
 			<RowDefinition Height="10"/>
 			<RowDefinition Height="40"/>
 			<RowDefinition Height="40"/>
-			<RowDefinition Height="300"/>
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="40"/>
 		</Grid.RowDefinitions>
 
 		<TextBlock Text="Please choose a device to Update" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
 
-		<Button
+		<StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center">
+			<Button
 			x:Name="btnScan"
-			Grid.Row="2"
 			Width="150"
 			Height="30"
-			HorizontalAlignment="Center"
-			VerticalAlignment="Bottom"
 			Command="{Binding StartScanCommand}"
 			Content="{Binding ScanButtonText}"
 			HorizontalContentAlignment="Center"
-			VerticalContentAlignment="Center"
-		>
-		</Button>
+			VerticalContentAlignment="Center">
+			</Button>
+			<Button
+			x:Name="btnCancelScan"
+			Width="150"
+			Height="30"
+			Command="{Binding CancelScanCommand}"
+			Content="Cancel Scan"
+			IsEnabled="{Binding CancelButtonEnabled}"
+			HorizontalContentAlignment="Center"
+			VerticalContentAlignment="Center">
+			</Button>
+		</StackPanel>
+
 
 		<DataGrid x:Name="dgDevices" Margin="20" Grid.Row="3" ItemsSource="{Binding Devices}"
 		  AutoGenerateColumns="True" IsReadOnly="True"
@@ -49,7 +57,7 @@
 		  BorderThickness="1" BorderBrush="Gray">
 		</DataGrid>
 
-		<StackPanel Margin="5" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5">
+		<StackPanel Margin="5" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="4">
 			<Button 
 			x:Name="btnPrev"
 			Width="100"

@@ -5,13 +5,13 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UpdateManagerMockup.Views.UserControls.TabInterface">
 
-	<Grid VerticalAlignment="Center">
+	<Grid VerticalAlignment="Stretch">
 		<Grid.RowDefinitions>
-			<RowDefinition Height="30"/>
-			<RowDefinition Height="40"/>
-			<RowDefinition Height="150"/>
 			<RowDefinition Height="*"/>
-			<RowDefinition Height="80"/>
+			<RowDefinition Height="40"/>
+			<RowDefinition Height="115"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="50"/>
 		</Grid.RowDefinitions>
 
 		<TextBlock Text="Please choose the interface your devices are attached to" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
@@ -28,7 +28,7 @@
 			Height="40" 
 			Grid.Row="4" 
 			HorizontalAlignment="Right" 
-			VerticalAlignment="Bottom"
+			VerticalAlignment="Center"
 			Click="NextButtonClicked"
 			>
 			<Button.Content>
