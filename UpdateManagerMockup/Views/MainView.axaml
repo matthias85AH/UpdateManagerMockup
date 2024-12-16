@@ -23,6 +23,9 @@
 		<TabItem FontFamily="{StaticResource Khand}" Header="Update Status">
 			<uc:TabUpdate x:Name="tabUpdate"></uc:TabUpdate>
 		</TabItem>
+		<TabItem FontFamily="{StaticResource Khand}" Header="User Control">
+			<uc:TabUserControl x:Name="tabUserControl"></uc:TabUserControl>
+		</TabItem>
 	</TabControl>
   
 </UserControl>

@@ -27,8 +27,6 @@
 			<RowDefinition Height="40"/>
 		</Grid.RowDefinitions>
 
-		
-
 		<TextBlock Text="Please choose a device to Update" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="1"/>
 
 		<Button
@@ -52,7 +50,7 @@
 		</DataGrid>
 
 		<StackPanel Margin="5" HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="5">
-			<Button
+			<Button 
 			x:Name="btnPrev"
 			Width="100"
 			Height="40"
