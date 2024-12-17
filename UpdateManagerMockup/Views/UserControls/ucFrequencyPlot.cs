@@ -9,8 +9,6 @@ namespace UpdateManagerMockup.Views.UserControls
 {
     public class ucFrequencyPlot : Control
     {
-        private Point _cursorPoint;
-
         public static readonly StyledProperty<double> FrequencyProperty = AvaloniaProperty.Register<ucFrequencyPlot, double>(nameof(Frequency), 1.0d);
         public double Frequency { get => GetValue(FrequencyProperty); set => SetValue(FrequencyProperty, value); }
 
@@ -31,15 +29,6 @@ namespace UpdateManagerMockup.Views.UserControls
         {
             _penGrid = new Pen(new SolidColorBrush(Colors.DarkGray), lineCap: PenLineCap.Round);
             _penWave = new Pen(new SolidColorBrush(Color.FromRgb(0, 163, 200)), thickness: 5.0d);
-        }
-
-        protected override void OnPointerMoved(PointerEventArgs e)
-        {
-            base.OnPointerMoved(e);
-
-            Point previousPoint = _cursorPoint;
-
-            _cursorPoint = e.GetPosition(this);
         }
 
         public override void Render(DrawingContext context)

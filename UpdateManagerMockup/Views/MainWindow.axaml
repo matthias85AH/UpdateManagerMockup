@@ -7,6 +7,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
 		Width="960" Height="490"
         x:Class="UpdateManagerMockup.Views.MainWindow"
+		Background="Black"
         Icon="/Assets/LdLogo_w.png"
         Title="UpdateManagerMockup">
         <views:MainView />

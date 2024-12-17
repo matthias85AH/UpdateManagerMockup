@@ -11,19 +11,24 @@
 
 	<Grid>
 		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="1.5*"></ColumnDefinition>
+			<ColumnDefinition Width="4*"></ColumnDefinition>
 			<ColumnDefinition Width="2*"></ColumnDefinition>
-			<ColumnDefinition Width="*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="*"></RowDefinition>
 			<RowDefinition Height="2*"></RowDefinition>
 		</Grid.RowDefinitions>
 
-		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Column="0">
+		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+			<local:ucLevelMeter x:Name="LevelMeter"/>
+		</Border>
+
+		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Column="1">
 			<local:ucFrequencyPlot x:Name="FrequencyPlot" Frequency="80" Amplitude="50" />
 		</Border>
 
-		<Viewbox Margin="5" Stretch="Uniform" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="1">
+		<Viewbox Margin="5" Stretch="Uniform" HorizontalAlignment="Stretch" Grid.Row="0" Grid.Column="2">
 			<StackPanel Width="200" >
 				<Label  HorizontalAlignment="Center" VerticalAlignment="Center">Frequency</Label>
 				<Slider  x:Name="sliderFrequency" Minimum="0" Maximum="100" Value="{Binding ElementName=FrequencyPlot, Path=Frequency}"></Slider>
@@ -33,7 +38,7 @@
 			</StackPanel>
 		</Viewbox>
 		
-		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2">
 			<local:ucTouchPlayground x:Name="TouchPlayground"/>
 		</Border>
 	</Grid>
