@@ -34,6 +34,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\UserControls\TabPDF.axaml.cs">
+      <DependentUpon>TabPDF.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\UserControls\TabUserControl.axaml.cs">
       <DependentUpon>TabUserControl.axaml</DependentUpon>
     </Compile>
