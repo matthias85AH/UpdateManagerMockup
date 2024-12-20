@@ -23,6 +23,7 @@
 		  <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>-->
 	  </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" />
+    <PackageReference Include="Plugin.BLE" />
   </ItemGroup>
 
   <ItemGroup>
@@ -34,6 +35,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\UserControls\TabBLE.axaml.cs">
+      <DependentUpon>TabBLE.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\UserControls\TabPDF.axaml.cs">
       <DependentUpon>TabPDF.axaml</DependentUpon>
     </Compile>

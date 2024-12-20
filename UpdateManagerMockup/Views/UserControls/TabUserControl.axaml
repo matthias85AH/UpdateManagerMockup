@@ -21,7 +21,7 @@
 		</Grid.RowDefinitions>
 
 		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
-			<local:ucLevelMeter x:Name="LevelMeter"/>
+			<local:ucLevelMeter DemoMode="True" x:Name="LevelMeter"/>
 		</Border>
 
 		<Border Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10" Grid.Column="1">

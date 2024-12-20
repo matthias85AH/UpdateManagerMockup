@@ -12,6 +12,9 @@ namespace UpdateManagerMockup.Views.UserControls
         public static readonly StyledProperty<double> LevelProperty = AvaloniaProperty.Register<ucFrequencyPlot, double>(nameof(Level), 70.0d);
         public double Level { get => GetValue(LevelProperty); set => SetValue(LevelProperty, value); }
 
+        public static readonly StyledProperty<bool> DemoModeProperty = AvaloniaProperty.Register<ucFrequencyPlot, bool>(nameof(DemoModeProperty), false);
+        public bool DemoMode { get => GetValue(DemoModeProperty); set => SetValue(DemoModeProperty, value); }
+
         private int numRects = 30;
 
         private double gapRatio = 0.1;
@@ -66,9 +69,12 @@ namespace UpdateManagerMockup.Views.UserControls
                 context.FillRectangle(currentBrush, new Rect(x, y, width, height), 5.0f);
             }
 
-            Level = 70.0 + Math.Sin(_timeKeeper.ElapsedMilliseconds / 250.0d) * 20.0;
-
             clip.Dispose();
+
+            if (DemoMode)
+            {
+                Level = 70.0 + Math.Sin(_timeKeeper.ElapsedMilliseconds / 250.0d) * 20.0;
+            }
 
             // oh and draw again when you can, no rush, right? 
             Dispatcher.UIThread.Post(InvalidateVisual, DispatcherPriority.Background);

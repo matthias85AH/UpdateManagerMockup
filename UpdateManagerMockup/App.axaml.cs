@@ -11,6 +11,8 @@ namespace UpdateManagerMockup;
 
 public partial class App : Application
 {
+    public static IPermissionManager? PermissionManager { get; set; } = null;
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);

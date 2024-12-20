@@ -29,6 +29,9 @@
 		<TabItem FontFamily="{StaticResource Khand}" Header="PDF">
 			<uc:TabPDF x:Name="tabPDF"></uc:TabPDF>
 		</TabItem>
+		<TabItem FontFamily="{StaticResource Khand}" Header="BLE">
+			<uc:TabBLE x:Name="tabBLE"></uc:TabBLE>
+		</TabItem>
 	</TabControl>
   
 </UserControl>
