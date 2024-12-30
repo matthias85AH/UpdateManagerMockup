@@ -1,11 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Android;
-using Android.App;
+﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.OS;
 using Avalonia;
 using Avalonia.Android;
+using Plugin.NFC;
 
 namespace UpdateManagerMockup.Android;
 
@@ -21,21 +20,6 @@ public class MainActivity : AvaloniaMainActivity<App>
 
     protected override AppBuilder CustomizeAppBuilder(AppBuilder builder)
     {
-        //CTX = this.ApplicationContext;
-
-        List<string> neededPermissions = new List<string>(
-            [
-            Manifest.Permission.ReadExternalStorage,
-            Manifest.Permission.WriteExternalStorage,
-            Manifest.Permission.AccessCoarseLocation,
-            Manifest.Permission.AccessFineLocation,
-            Manifest.Permission.Bluetooth,
-            Manifest.Permission.BluetoothAdmin,
-            Manifest.Permission.BluetoothAdvertise,
-            Manifest.Permission.BluetoothConnect,
-            Manifest.Permission.BluetoothScan
-            ]);
-
         //List<string> notGrantedPermissions = new List<string>();
 
         //foreach (string permission in neededPermissions)
@@ -51,5 +35,26 @@ public class MainActivity : AvaloniaMainActivity<App>
 
         return base.CustomizeAppBuilder(builder)
             .WithInterFont();
+    }
+
+    protected override void OnCreate(Bundle? savedInstanceState)
+    {
+        CrossNFC.Init(this);
+
+        base.OnCreate(savedInstanceState);
+    }
+
+    protected override void OnResume()
+    {
+        base.OnResume();
+
+        CrossNFC.OnResume();
+    }
+
+    protected override void OnNewIntent(Intent? intent)
+    {
+        base.OnNewIntent(intent);
+
+        CrossNFC.OnNewIntent(intent);
     }
 }

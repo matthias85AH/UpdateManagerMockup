@@ -24,6 +24,7 @@
 	  </PackageReference>
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Plugin.BLE" />
+    <PackageReference Include="Plugin.NFC" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +36,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\UserControls\TabNFC.axaml.cs">
+      <DependentUpon>TabNFC.axaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\UserControls\TabBLE.axaml.cs">
       <DependentUpon>TabBLE.axaml</DependentUpon>
     </Compile>

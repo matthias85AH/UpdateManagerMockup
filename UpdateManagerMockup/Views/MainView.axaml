@@ -32,6 +32,9 @@
 		<TabItem FontFamily="{StaticResource Khand}" Header="BLE">
 			<uc:TabBLE x:Name="tabBLE"></uc:TabBLE>
 		</TabItem>
+		<TabItem FontFamily="{StaticResource Khand}" Header="NFC">
+			<uc:TabNFC x:Name="tabNFC"></uc:TabNFC>
+		</TabItem>
 	</TabControl>
   
 </UserControl>
