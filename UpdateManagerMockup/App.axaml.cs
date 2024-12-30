@@ -6,6 +6,7 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using UpdateManagerMockup.ViewModels;
 using UpdateManagerMockup.Views;
+using AvaloniaWebView;
 
 namespace UpdateManagerMockup;
 
@@ -52,5 +53,13 @@ public partial class App : Application
         {
             BindingPlugins.DataValidators.Remove(plugin);
         }
+    }
+
+    public override void RegisterServices()
+    {
+        base.RegisterServices();
+
+        // if you use only WebView  
+        AvaloniaWebViewBuilder.Initialize(default);
     }
 }

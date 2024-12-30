@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia;
+using Avalonia.WebView.Desktop;
 
 namespace UpdateManagerMockup.Desktop;
 
@@ -20,6 +21,7 @@ sealed class Program
         return AppBuilder.Configure<App>()
             .UsePlatformDetect()
             .WithInterFont()
-            .LogToTrace();
+            .LogToTrace()
+            .UseDesktopWebView();
     }
 }

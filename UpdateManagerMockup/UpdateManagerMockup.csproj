@@ -25,6 +25,7 @@
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Plugin.BLE" />
     <PackageReference Include="Plugin.NFC" />
+    <PackageReference Include="WebView.Avalonia" />
   </ItemGroup>
 
   <ItemGroup>

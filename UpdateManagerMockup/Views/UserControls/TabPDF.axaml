@@ -9,7 +9,20 @@
 			 VerticalAlignment="Stretch"
 			 HorizontalAlignment="Stretch">
 
-	<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">PDF</TextBlock>
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"></ColumnDefinition>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="50"></RowDefinition>
+			<RowDefinition Height="*"></RowDefinition>
+		</Grid.RowDefinitions>
+
+		<TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">PDF</TextBlock>
+		<WebView x:Name="PDFWebView" Grid.Column="0" Grid.Row="1" Url="https://www.google.com" ></WebView>
+	</Grid>
+
+	
 
 	
 </UserControl>

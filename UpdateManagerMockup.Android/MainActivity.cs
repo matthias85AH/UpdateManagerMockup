@@ -5,6 +5,7 @@ using Android.OS;
 using Avalonia;
 using Avalonia.Android;
 using Plugin.NFC;
+using Avalonia.WebView.Android;
 
 namespace UpdateManagerMockup.Android;
 
@@ -34,7 +35,8 @@ public class MainActivity : AvaloniaMainActivity<App>
         App.PermissionManager = new PermissionManager(this.ApplicationContext);
 
         return base.CustomizeAppBuilder(builder)
-            .WithInterFont();
+            .WithInterFont()
+            .UseAndroidWebView();
     }
 
     protected override void OnCreate(Bundle? savedInstanceState)
