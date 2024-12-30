@@ -36,11 +36,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Update="Views\UserControls\TabQR.axaml">
+      <SubType>Designer</SubType>
+    </AvaloniaXaml>
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Views\UserControls\TabNFC.axaml.cs">
       <DependentUpon>TabNFC.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\UserControls\TabBLE.axaml.cs">
       <DependentUpon>TabBLE.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\UserControls\TabQR.axaml.cs">
+      <SubType>Code</SubType>
+      <DependentUpon>TabQR.axaml</DependentUpon>
     </Compile>
     <Compile Update="Views\UserControls\TabPDF.axaml.cs">
       <DependentUpon>TabPDF.axaml</DependentUpon>
