@@ -13,6 +13,7 @@ namespace UpdateManagerMockup;
 public partial class App : Application
 {
     public static IPermissionManager? PermissionManager { get; set; } = null;
+    public static IPlatformDependendUtils? PlatformDependendUtils { get; set; } = null;
 
     public override void Initialize()
     {

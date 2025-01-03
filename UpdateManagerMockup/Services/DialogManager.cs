@@ -120,5 +120,42 @@ namespace UpdateManagerMockup.Services
             return null;
         }
 
+        public static async Task<bool?> LaunchUriAsync(this object? context, Uri uri)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            // lookup the TopLevel for the context
+            var topLevel = DialogManager.GetTopLevelForContext(context);
+
+            if (topLevel != null)
+            {
+                // Open the file dialog
+                var launchUriResult = await topLevel.Launcher.LaunchUriAsync(uri);
+                return launchUriResult;
+            }
+            return null;
+        }
+
+        public static async Task<bool?> LaunchFileAsync(this object? context, Uri uri)
+        {
+            if (context == null)
+            {
+                throw new ArgumentNullException(nameof(context));
+            }
+
+            // lookup the TopLevel for the context
+            var topLevel = DialogManager.GetTopLevelForContext(context);
+
+            if (topLevel != null)
+            {
+                // Open the file dialog
+                var launchUriResult = await topLevel.Launcher.LaunchUriAsync(uri);
+                return launchUriResult;
+            }
+            return null;
+        }
     }
 }

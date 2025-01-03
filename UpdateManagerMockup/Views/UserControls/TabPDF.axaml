@@ -14,15 +14,49 @@
 			<ColumnDefinition Width="*"></ColumnDefinition>
 		</Grid.ColumnDefinitions>
 		<Grid.RowDefinitions>
-			<RowDefinition Height="50"></RowDefinition>
+			<RowDefinition Height="20"></RowDefinition>
 			<RowDefinition Height="*"></RowDefinition>
 		</Grid.RowDefinitions>
-
-		<TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">PDF</TextBlock>
-		<WebView x:Name="PDFWebView" Grid.Column="0" Grid.Row="1" Url="https://www.google.com" ></WebView>
+		<!--<StackPanel Grid.Column="0" Grid.Row="0" Orientation="Horizontal">
+			<Button Name="Button1"  HorizontalAlignment="Center" VerticalAlignment="Center">
+				<StackPanel>
+					<TextBlock HorizontalAlignment="Center">Permanent</TextBlock>
+					<TextBlock HorizontalAlignment="Center">Counter</TextBlock>
+				</StackPanel>
+			</Button>
+			<Button Name="Button2"  HorizontalAlignment="Center" VerticalAlignment="Center">
+				<StackPanel>
+					<TextBlock HorizontalAlignment="Center">PDF internal</TextBlock>
+					<TextBlock HorizontalAlignment="Center">from URI</TextBlock>
+				</StackPanel>
+			</Button>
+			<Button Name="Button3"  HorizontalAlignment="Center" VerticalAlignment="Center">
+				<StackPanel>
+					<TextBlock HorizontalAlignment="Center">PDF external</TextBlock>
+					<TextBlock HorizontalAlignment="Center">from URI</TextBlock>
+				</StackPanel>
+			</Button>
+			<Button Name="Button4"  HorizontalAlignment="Center" VerticalAlignment="Center">
+				<StackPanel>
+					<TextBlock HorizontalAlignment="Center">PDF reader</TextBlock>
+					<TextBlock HorizontalAlignment="Center">external</TextBlock>
+				</StackPanel>
+			</Button>
+			<Button Name="Button5"  HorizontalAlignment="Center" VerticalAlignment="Center">
+				<StackPanel>
+					<TextBlock HorizontalAlignment="Center">PDF reader</TextBlock>
+					<TextBlock HorizontalAlignment="Center">internal</TextBlock>
+				</StackPanel>
+			</Button>
+			<Button Name="Button6"  HorizontalAlignment="Center" VerticalAlignment="Center">
+				<StackPanel>
+					<TextBlock HorizontalAlignment="Center">Save and</TextBlock>
+					<TextBlock HorizontalAlignment="Center">open HTML</TextBlock>
+				</StackPanel>
+			</Button>
+		</StackPanel>-->
+		
+		<TextBlock Name="Text1" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">PDF</TextBlock>
+		<WebView x:Name="PDFWebView" Grid.Column="0" Grid.Row="1" Url="" ></WebView>
 	</Grid>
-
-	
-
-	
 </UserControl>
