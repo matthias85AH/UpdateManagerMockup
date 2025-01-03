@@ -27,16 +27,20 @@
 		<Grid.RowDefinitions>
 			<RowDefinition Height="50"></RowDefinition>
 			<RowDefinition Height="50"></RowDefinition>
+			<RowDefinition Height="50"></RowDefinition>
 			<RowDefinition Height="*"></RowDefinition>
 			<RowDefinition Height="50"></RowDefinition>
 		</Grid.RowDefinitions>
 
 		<TextBlock Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">Bluetooth</TextBlock>
 		<Button Grid.Column="0" Grid.Row="1" Command="{Binding ConnectCommand}" HorizontalAlignment="Center">Connect</Button>
-		<Border Grid.Column="0" Grid.Row="2" Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10">
+		<Button Grid.Column="0" Grid.Row="2" Command="{Binding ConnectAndroidCommand}" HorizontalAlignment="Center">Connect Android</Button>
+		<Border Grid.Column="0" Grid.Row="3" Background="Black" Margin="2" BorderBrush="Gray" Padding="2" BorderThickness="4" CornerRadius="10">
 			<local:ucLevelMeter Level="{Binding LevelMeterValue}" x:Name="LevelMeter"/>
 		</Border>
-		<TextBlock Grid.Column="0" Grid.Row="3" Text="{Binding LevelMeterValue}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
-		<TextBlock Margin="10" Grid.Column="1" Grid.Row="0" Grid.RowSpan="4" Text="{Binding DebugOutput}"></TextBlock>
+		<TextBlock Grid.Column="0" Grid.Row="4" Text="{Binding LevelMeterValue}" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+		<ScrollViewer Grid.Column="1" Grid.Row="0" Grid.RowSpan="5">
+			<TextBlock Margin="10" Text="{Binding DebugOutput}"></TextBlock>
+		</ScrollViewer>		
 	</Grid>
 </UserControl>

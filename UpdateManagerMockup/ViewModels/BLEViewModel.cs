@@ -22,6 +22,7 @@ public partial class BLEViewModel : ViewModelBase
     private bool deviceFound = false;
 
     public AsyncRelayCommand ConnectCommand { get; }
+    public RelayCommand ConnectAndroidCommand { get; }
 
     private int _levelMeterValue = 80;
     public int LevelMeterValue
@@ -44,6 +45,7 @@ public partial class BLEViewModel : ViewModelBase
     public BLEViewModel()
     {
         ConnectCommand = new AsyncRelayCommand(OnConnect);
+        ConnectAndroidCommand = new RelayCommand(OnAndroidConnect);
     }
 
     private void DbgOutput(string txt)
@@ -88,6 +90,10 @@ public partial class BLEViewModel : ViewModelBase
             // Wait for either the scan to complete or the delay to expire
             var completedTask = await Task.WhenAny(scanTask, delayTask);
 
+            DbgOutput("Stopping Scan");
+            await adapter.StopScanningForDevicesAsync();
+            DbgOutput("Scan stopped");
+
             // If the delay task completed first, stop scanning
             if (!deviceFound)
             {
@@ -104,8 +110,14 @@ public partial class BLEViewModel : ViewModelBase
         {
             try
             {
+                //DbgOutput("Waiting before Get Services...");
+                //await Task.Delay(2000);
                 DbgOutput("Retrieving Services...");
+                
                 var services = await device.GetServicesAsync();
+                //var service = await device.GetServiceAsync(Guid.Parse("00001801-0000-1000-8000-00805f9b34fb"));
+
+                //00001801-0000-1000-8000-00805f9b34fb
                 foreach (var service in services)
                 {
                     DbgOutput($"Found Service: {service.Id}");
@@ -141,6 +153,46 @@ public partial class BLEViewModel : ViewModelBase
         //});
     }
 
+    private void OnAndroidConnect()
+    {
+        DbgOutput("Android Bluetooth Test");
+
+        if (App.PermissionManager != null)
+        {
+            DbgOutput($"READ_EXTERNAL_STORAGE:  {App.PermissionManager.PermissionStatus("android.permission.READ_EXTERNAL_STORAGE")}");
+            DbgOutput($"WRITE_EXTERNAL_STORAGE: {App.PermissionManager.PermissionStatus("android.permission.WRITE_EXTERNAL_STORAGE")}");
+            DbgOutput($"ACCESS_COARSE_LOCATION: {App.PermissionManager.PermissionStatus("android.permission.ACCESS_COARSE_LOCATION")}");
+            DbgOutput($"ACCESS_FINE_LOCATION: {App.PermissionManager.PermissionStatus("android.permission.ACCESS_FINE_LOCATION")}");
+            DbgOutput($"BLUETOOTH: {App.PermissionManager.PermissionStatus("android.permission.BLUETOOTH")}");
+            DbgOutput($"BLUETOOTH_ADMIN: {App.PermissionManager.PermissionStatus("android.permission.BLUETOOTH_ADMIN")}");
+            DbgOutput($"BLUETOOTH_ADVERTISE: {App.PermissionManager.PermissionStatus("android.permission.BLUETOOTH_ADVERTISE")}");
+            DbgOutput($"BLUETOOTH_CONNECT: {App.PermissionManager.PermissionStatus("android.permission.BLUETOOTH_CONNECT")}");
+            DbgOutput($"BLUETOOTH_SCAN: {App.PermissionManager.PermissionStatus("android.permission.BLUETOOTH_SCAN")}");
+        }
+
+        if (App.PlatformDependendUtils != null)
+        {
+            App.PlatformDependendUtils.OnMessage += PlatformDependendUtils_OnMessage;
+
+            App.PlatformDependendUtils.StartBLE();
+        }
+    }
+
+    private void PlatformDependendUtils_OnMessage(object? sender, string e)
+    {
+        if (e.StartsWith("Poti:"))
+        {
+            var potiValueStr = e.Split(":")[1];
+            var potiValue = ushort.Parse(potiValueStr);
+            _levelMeterValue = potiValue * 100 / 4096;
+            OnPropertyChanged(nameof(LevelMeterValue));
+        }
+        else
+        {
+            DbgOutput($"{e}");
+        }
+    }
+
     private void Characteristic_ValueUpdated(object? sender, Plugin.BLE.Abstractions.EventArgs.CharacteristicUpdatedEventArgs e)
     {
         var potiValue = BitConverter.ToUInt16(e.Characteristic.Value);
@@ -162,4 +214,9 @@ public partial class BLEViewModel : ViewModelBase
         //Console.WriteLine($"Found Device ID:{e.Device.Id} Name:{e.Device.Name} Name:{e.Device}");
         device = e.Device;
     }
+}
+
+public static class UtilExtensions
+{
+    
 }

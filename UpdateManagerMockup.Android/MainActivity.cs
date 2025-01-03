@@ -37,7 +37,7 @@ public class MainActivity : AvaloniaMainActivity<App>
         //{ RequestPermissions(neededPermissions.ToArray(), 2); }
 
         App.PermissionManager = new PermissionManager(this.ApplicationContext);
-        App.PlatformDependendUtils = new PlatformDependendUtils();
+        App.PlatformDependendUtils = new PlatformDependendUtils(this.ApplicationContext);
 
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()
@@ -62,7 +62,11 @@ public class MainActivity : AvaloniaMainActivity<App>
             ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.ReadExternalStorage }, 1);
         }
 
-        
+        if (ContextCompat.CheckSelfPermission(this, Manifest.Permission.BluetoothConnect) != Permission.Granted)
+        {
+            Toast.MakeText(this, "Bluetooth Connect Permission needed", ToastLength.Long);
+            ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.BluetoothConnect }, 1);
+        }
     }
 
     protected override void OnResume()

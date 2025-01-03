@@ -12,8 +12,4 @@ public partial class TabBLE : UserControl
     {
         InitializeComponent();
     }
-
-    private void ConnectCommand(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
-    {
-    }
 }
