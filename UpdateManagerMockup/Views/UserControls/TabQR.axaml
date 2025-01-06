@@ -4,12 +4,19 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 			 xmlns:vm="clr-namespace:UpdateManagerMockup.ViewModels"
 			 xmlns:local="using:UpdateManagerMockup.Views.UserControls"
+			 
+			 xmlns:controls="using:Avalonia.Maui.Controls"
+			 xmlns:mauiControls="using:Microsoft.Maui.Controls"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="UpdateManagerMockup.Views.UserControls.TabQR"
 			 VerticalAlignment="Stretch"
 			 HorizontalAlignment="Stretch">
 
-	<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">QR</TextBlock>
+	<StackPanel x:Name="mainStackPanel">
+		<TextBlock HorizontalAlignment="Center" VerticalAlignment="Center">QR Camera</TextBlock>
 
-	
+	</StackPanel>
+
+
+
 </UserControl>

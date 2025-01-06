@@ -10,6 +10,9 @@ using AndroidX.Core.App;
 using AndroidX.Core.Content;
 using Android;
 using Android.Widget;
+using Avalonia.Maui;
+using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Camera;
 
 namespace UpdateManagerMockup.Android;
 
@@ -41,7 +44,8 @@ public class MainActivity : AvaloniaMainActivity<App>
 
         return base.CustomizeAppBuilder(builder)
             .WithInterFont()
-            .UseAndroidWebView();
+            .UseAndroidWebView()
+            .UseMaui<MauiApplication>(this, b => b.UseMauiCommunityToolkitCamera());
     }
 
     protected override void OnCreate(Bundle? savedInstanceState)

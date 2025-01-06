@@ -15,6 +15,8 @@ using AndroidX.Core.App;
 using AndroidX.Core.Content;
 using Avalonia.WebView.Android.Core;
 using AvaloniaWebView;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Maui.Camera;
 using Java.Nio.FileNio.Attributes;
 
 namespace UpdateManagerMockup.Android
@@ -24,6 +26,14 @@ namespace UpdateManagerMockup.Android
         public event EventHandler<string>? OnMessage;
 
         private Context? _appContext;
+
+        public ICameraProvider CameraProvider
+        {
+            get
+            {
+                return null;
+            }
+        }
 
         public PlatformDependendUtils(Context? appContext)
         {

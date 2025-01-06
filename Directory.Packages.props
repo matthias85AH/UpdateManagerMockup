@@ -7,6 +7,7 @@
     <!-- Avalonia packages -->
     <!-- Important: keep version in sync! -->
     <PackageVersion Include="Avalonia" Version="11.2.3" />
+    <PackageVersion Include="Avalonia.Maui" Version="11.1.0" />
     <PackageVersion Include="Avalonia.Themes.Fluent" Version="11.2.3" />
     <PackageVersion Include="Avalonia.Fonts.Inter" Version="11.2.3" />
     <PackageVersion Include="Avalonia.Diagnostics" Version="11.2.3" />
@@ -14,6 +15,7 @@
     <PackageVersion Include="Avalonia.iOS" Version="11.2.1" />
     <PackageVersion Include="Avalonia.Browser" Version="11.2.1" />
     <PackageVersion Include="Avalonia.Android" Version="11.2.1" />
+    <PackageVersion Include="CommunityToolkit.Maui.Camera" Version="1.0.5" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageVersion Include="Plugin.BLE" Version="3.1.0" />
     <PackageVersion Include="Plugin.NFC" Version="0.1.26" />

@@ -4,6 +4,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
     <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	<UseMaui>true</UseMaui>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <Optimize>True</Optimize>
@@ -15,6 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Avalonia" />
+    <PackageReference Include="Avalonia.Maui" />
     <PackageReference Include="Avalonia.Themes.Fluent" />
     <PackageReference Include="Avalonia.Fonts.Inter" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
@@ -22,6 +24,7 @@
 		  <!--<IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
 		  <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>-->
 	  </PackageReference>
+	  <PackageReference Include="CommunityToolkit.Maui.Camera" />
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Plugin.BLE" />
     <PackageReference Include="Plugin.NFC" />
