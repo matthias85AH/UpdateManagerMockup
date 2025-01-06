@@ -9,6 +9,7 @@ using Avalonia.Maui.Controls;
 using Avalonia.Media;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using Avalonia.Threading;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,7 +20,8 @@ namespace UpdateManagerMockup.Views.UserControls;
 
 public partial class TabQR : UserControl
 {
-    private ICameraProvider cameraProvider;
+    private CameraView camView;
+    private Avalonia.Controls.Image img;
 
     public TabQR()
     {
@@ -33,8 +35,8 @@ public partial class TabQR : UserControl
         // Create the Button
         Avalonia.Controls.Button newButton = new Avalonia.Controls.Button
         {
-            Content = "Start",
-            Width = 200,
+            Content = "Take Snapshot",
+            Width = 400,
             Height = 50
         };
 
@@ -50,31 +52,34 @@ public partial class TabQR : UserControl
 
     private void CreateCameraView()
     {
-        var grid = new Avalonia.Controls.Grid();
+        //var grid = new Avalonia.Controls.Grid();
 
-        var canvas = new Canvas();
-        var rectangle = new Rectangle
-        {
-            Width = 30,
-            Height = 30,
-            Fill = Brushes.Red
-        };
+        //var canvas = new Canvas();
+        //var rectangle = new Rectangle
+        //{
+        //    Width = 30,
+        //    Height = 30,
+        //    Fill = Brushes.Red
+        //};
 
-        Canvas.SetLeft(rectangle, 10);
-        Canvas.SetTop(rectangle, 10);
+        //Canvas.SetLeft(rectangle, 10);
+        //Canvas.SetTop(rectangle, 10);
 
-        canvas.Children.Add(rectangle);
+        //canvas.Children.Add(rectangle);
 
-        var img = new Avalonia.Controls.Image();
+        img = new Avalonia.Controls.Image();
         img.Source = new Bitmap(AssetLoader.Open(new Uri("avares://UpdateManagerMockup/Assets/LdLogo_w.png")));
 
         var controlHost = new MauiControlHost();
 
-        var camView = new CameraView();
+        camView = new CameraView();
+        camView.MediaCaptured += CamView_MediaCaptured;
 
         controlHost.Content = camView;
+        controlHost.Width = 400;
+        controlHost.Height = 300;
 
-        grid.Children.Add(controlHost);
+        //grid.Children.Add(controlHost);
         //grid.Children.Add(img);
 
         controlHost.ZIndex = 1;
@@ -84,16 +89,32 @@ public partial class TabQR : UserControl
         var parentContainer = this.FindControl<StackPanel>("mainStackPanel");
 
         // Add the button to the parent container
-        parentContainer?.Children.Add(grid);
-        controlHost.Width = 400;
-        controlHost.Height = 300;
+        parentContainer?.Children.Add(controlHost);
+        parentContainer?.Children.Add(img);
+    }
+
+    private void CamView_MediaCaptured(object? sender, MediaCapturedEventArgs e)
+    {
+        Dispatcher.UIThread.Post(() => 
+        {
+            img.Source = new Bitmap(e.Media);
+        });
+
+        //if (Avalonia.Threading.Dispatcher.UIThread.)
+        //{
+        //    Dispatcher.Dispatch(() => MyImage.Source = ImageSource.FromStream(() => e.Media));
+        //    return;
+        //}
+
+        //MyImage.Source = ImageSource.FromStream(() => e.Media);
     }
 
     private void NewButton_Click(object sender, RoutedEventArgs e)
     {
         // Handle the button click event
         var button = sender as Avalonia.Controls.Button;
-        button.Content = "Clicked!";
+        //button.Content = "Clicked!";
+        camView.CaptureImage(CancellationToken.None);
     }
 }
 
