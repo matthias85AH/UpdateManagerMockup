@@ -29,6 +29,7 @@
     <PackageReference Include="Plugin.BLE" />
     <PackageReference Include="Plugin.NFC" />
     <PackageReference Include="WebView.Avalonia" />
+    <PackageReference Include="ZXing.Net" />
   </ItemGroup>
 
   <ItemGroup>

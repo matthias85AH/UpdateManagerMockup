@@ -11,4 +11,5 @@
         Icon="/Assets/LdLogo_w.png"
         Title="UpdateManagerMockup">
         <views:MainView />
+
 </Window>

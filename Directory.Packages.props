@@ -23,5 +23,6 @@
     <PackageVersion Include="WebView.Avalonia.Android" Version="11.0.0.1" />
     <PackageVersion Include="WebView.Avalonia.Desktop" Version="11.0.0.1" />
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
+    <PackageVersion Include="ZXing.Net" Version="0.16.9" />
   </ItemGroup>
 </Project>
