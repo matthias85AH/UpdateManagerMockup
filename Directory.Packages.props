@@ -19,10 +19,13 @@
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     <PackageVersion Include="Plugin.BLE" Version="3.1.0" />
     <PackageVersion Include="Plugin.NFC" Version="0.1.26" />
+    <PackageVersion Include="SixLabors.ImageSharp" Version="3.1.6" />
     <PackageVersion Include="WebView.Avalonia" Version="11.0.0.1" />
     <PackageVersion Include="WebView.Avalonia.Android" Version="11.0.0.1" />
     <PackageVersion Include="WebView.Avalonia.Desktop" Version="11.0.0.1" />
     <PackageVersion Include="Xamarin.AndroidX.Core.SplashScreen" Version="1.0.1.1" />
     <PackageVersion Include="ZXing.Net" Version="0.16.9" />
+    <PackageVersion Include="ZXing.Net.Bindings.ImageSharp" Version="0.16.14" />
+    <PackageVersion Include="ZXing.Net.Bindings.ImageSharp.V3" Version="0.16.16" />
   </ItemGroup>
 </Project>

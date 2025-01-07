@@ -45,7 +45,7 @@
 				<RowDefinition Height="*"></RowDefinition>
 			</Grid.RowDefinitions>
 			<Image x:Name="imgPicture" Margin="5" Grid.Row="0" Source="avares://UpdateManagerMockup/Assets/image_placeholder.jpg"></Image>
-			<TextBlock Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">Detected Content</TextBlock>
+			<TextBlock x:Name="txtDetectedContent" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">Detected Content</TextBlock>
 		</Grid>
 
 	</Grid>

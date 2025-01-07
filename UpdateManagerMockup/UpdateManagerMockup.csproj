@@ -28,8 +28,10 @@
     <PackageReference Include="CommunityToolkit.Mvvm" />
     <PackageReference Include="Plugin.BLE" />
     <PackageReference Include="Plugin.NFC" />
+    <PackageReference Include="SixLabors.ImageSharp" />
     <PackageReference Include="WebView.Avalonia" />
     <PackageReference Include="ZXing.Net" />
+    <PackageReference Include="ZXing.Net.Bindings.ImageSharp.V3" />
   </ItemGroup>
 
   <ItemGroup>
